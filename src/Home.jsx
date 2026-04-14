@@ -24,6 +24,59 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
     });
   }, []);
 
+  // ভিডিও রেন্ডার করার জন্য সর্বোচ্চ সাপোর্ট সম্বলিত ফাংশন
+  const renderMedia = (url) => {
+    if (!url) return <div className="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">No Preview</div>;
+
+    // সোশ্যাল মিডিয়া লিঙ্ক (YouTube/Facebook) হ্যান্ডেল করা
+    if (url.includes("facebook.com") || url.includes("fb.watch") || url.includes("youtube.com") || url.includes("youtu.be") || url.includes("fb.gg")) {
+      let embedUrl = url;
+      
+      // ফেসবুকের জন্য (Reels, Watch, Plugins) এম্বেড লিঙ্ক তৈরি
+      if (url.includes("facebook.com") || url.includes("fb.watch") || url.includes("fb.gg")) {
+        let finalUrl = url;
+        
+        // রিল লিঙ্ক হলে আইডি ক্লিন করে ওয়াচ মোডে নেওয়া (আইফ্রেম স্ট্যাবিলিটির জন্য)
+        if (url.includes("/reel/")) {
+          const parts = url.split("/reel/");
+          const reelId = parts[1]?.split("/")[0]?.split("?")[0]; 
+          finalUrl = `https://www.facebook.com/watch/?v=${reelId}`;
+        }
+        
+        embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(finalUrl)}&show_text=false&width=560`;
+      } 
+      // ইউটিউবের জন্য এম্বেড লিঙ্ক তৈরি
+      else if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop()?.split('?')[0];
+        embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      }
+
+      return (
+        <iframe 
+          src={embedUrl} 
+          className="w-full h-full aspect-video rounded-t-[25px]" 
+          allowFullScreen 
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        ></iframe>
+      );
+    }
+
+    // লোকাল পাথ বা সরাসরি ভিডিও ফাইল (.mp4) হলে
+    return (
+      <video 
+        key={url}
+        src={url} 
+        controls 
+        preload="metadata"
+        className="w-full h-full object-cover rounded-t-[25px]" 
+        onError={(e) => {
+          e.target.parentElement.innerHTML = '<div class="text-slate-500 text-xs p-4 text-center">Video Not Found (Check Path)</div>';
+        }}
+      />
+    );
+  };
+
   const handleReviewSubmit = (productId) => {
     if (rating === 0) return alert("দয়া করে স্টার রেটিং দিন!");
     
@@ -123,8 +176,9 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
                   </svg>
                 </button>
 
-                <div className="aspect-video bg-black relative">
-                  <video src={p.videoUrl} controls className="w-full h-full object-cover" />
+                <div className="aspect-video bg-black relative flex items-center justify-center overflow-hidden">
+                  {renderMedia(p.videoUrl)}
+                  
                   {activeCategory !== 'All' && (
                     <div className="absolute top-3 left-3 bg-blue-600 text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase z-10">
                       {activeCategory}
@@ -140,7 +194,6 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
 
                   <h3 className="text-lg font-bold text-slate-800 mb-4 line-clamp-2">{p.description}</h3>
 
-                  {/* নতুন যোগ করা GitHub এবং Netlify বাটন সেকশন */}
                   <div className="flex gap-2 mb-4">
                     {p.github && (
                       <a 
