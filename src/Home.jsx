@@ -36,7 +36,7 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
       if (url.includes("facebook.com") || url.includes("fb.watch") || url.includes("fb.gg")) {
         let finalUrl = url;
         
-        // রিল লিঙ্ক হলে আইডি ক্লিন করে ওয়াচ মোডে নেওয়া (আইফ্রেম স্ট্যাবিলিটির জন্য)
+        // রিল লিঙ্ক হলে আইডি ক্লিন করে ওয়াচ মোডে নেওয়া (আইফ্রেম স্ট্যাবিলিটির জন্য)
         if (url.includes("/reel/")) {
           const parts = url.split("/reel/");
           const reelId = parts[1]?.split("/")[0]?.split("?")[0]; 
@@ -111,7 +111,7 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 bg-white"> 
       
       {/* ১. সার্চ এবং ক্যাটাগরি সেকশন */}
       <div className="mb-12 text-center max-w-2xl mx-auto">
@@ -121,7 +121,8 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
           <input 
             type="text" 
             placeholder="Search projects (e.g. Birthday, Anniversary...)" 
-            className="w-full px-6 py-4 rounded-2xl bg-white shadow-lg border border-slate-100 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+            className="w-full px-6 py-4 rounded-2xl bg-white shadow-lg border border-slate-100 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-black placeholder:text-slate-400"
+            style={{ color: 'black', backgroundColor: 'white' }} 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -186,7 +187,7 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
                   )}
                 </div>
                 
-                <div className="p-6 flex flex-col flex-grow text-left">
+                <div className="p-6 flex flex-col flex-grow text-left bg-white">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-yellow-500 font-bold">★ {avgRating}</span>
                     <span className="text-slate-400 text-xs">({reviewCount} reviews)</span>
@@ -217,7 +218,7 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
                     )}
                   </div>
                   
-                  <div className="mb-4 bg-slate-50 p-3 rounded-xl">
+                  <div className="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
                     <div className="flex gap-1 mb-2">
                       {[1, 2, 3, 4, 5].map((num) => (
                         <button 
@@ -232,22 +233,23 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
                     <input 
                       type="text" 
                       placeholder="Write a review..."
-                      className="w-full text-xs p-2 rounded-lg border border-slate-200 outline-none"
+                      className="w-full text-xs p-3 rounded-lg border border-slate-300 bg-white text-black outline-none focus:border-blue-500"
+                      style={{ color: 'black', backgroundColor: 'white' }}
                       onChange={(e) => { setSelectedProject(p.id); setComment(e.target.value); }}
                       value={selectedProject === p.id ? comment : ''}
                     />
                     {selectedProject === p.id && rating > 0 && (
                       <button 
                         onClick={() => handleReviewSubmit(p.id)}
-                        className="mt-2 text-[10px] bg-slate-800 text-white px-3 py-1 rounded-lg uppercase font-bold"
+                        className="mt-3 w-full block bg-slate-800 text-white px-3 py-2 rounded-lg uppercase font-bold text-[10px] shadow-md active:scale-95 transition-all"
                       >
                         Post Review
                       </button>
                     )}
                   </div>
 
-                  <div className="flex justify-between items-center mt-auto">
-                    <span className="text-2xl font-black text-blue-600">{p.price} <small className="text-sm font-bold">TK</small></span>
+                  <div className="flex justify-between items-center mt-auto gap-2">
+                    <span className="text-xl font-black text-blue-600 whitespace-nowrap">{p.price} <small className="text-sm font-bold">TK</small></span>
                     <button 
                       onClick={() => addToCart(p)}
                       className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-bold transition-all active:scale-90"
@@ -261,7 +263,7 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
           })
         ) : (
           <div className="col-span-full text-center py-20 bg-slate-50 rounded-[40px] border border-dashed border-slate-200">
-            <p className="text-slate-400 font-bold italic uppercase tracking-widest">No projects found for "{searchTerm || activeCategory}"</p>
+            <p className="text-slate-800 font-bold italic uppercase tracking-widest">No projects found for "{searchTerm || activeCategory}"</p>
           </div>
         )}
       </div>
