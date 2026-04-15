@@ -28,7 +28,7 @@ const Checkout = ({ cart, removeFromCart, setView }) => {
                 </div>
 
                 {/* প্রোজেক্ট ডিটেইলস */}
-                <div className="flex-grow text-center sm:text-left">
+                <div className="flex-row text-center sm:text-left">
                   <h3 className="font-bold text-slate-800 text-xl mb-1">{item.description}</h3>
                   <p className="text-blue-600 font-black text-lg">{item.price} TK</p>
                 </div>

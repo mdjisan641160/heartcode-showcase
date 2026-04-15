@@ -119,7 +119,7 @@ const Auth = ({ setView, setUserData }) => {
         </div>
 
         <p className="mt-6 text-[9px] text-center text-slate-300 font-bold uppercase tracking-tighter">
-          HeartCode Studio &copy; 2026 - All Rights Reserved
+          HeartCode Studio BD &copy; 2026 - All Rights Reserved
         </p>
       </div>
     </div>

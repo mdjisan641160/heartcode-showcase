@@ -97,7 +97,7 @@ const Payment = ({ totalPrice, setView, setCart }) => {
           <div className={`p-6 rounded-2xl text-white shadow-lg mb-10 transition-all ${methods.find(m => m.id === selectedMethod).color}`}>
             <h3 className="text-lg font-bold mb-2 uppercase italic tracking-wide">Step 1: Send Money</h3>
             <p className="text-sm leading-relaxed text-white">
-              আপনার <b>{selectedMethod.toUpperCase()}</b> থেকে <span className="font-black text-xl text-yellow-300">01XXXXXXXXX</span> নাম্বারে 
+              আপনার <b>{selectedMethod.toUpperCase()}</b> থেকে <span className="font-black text-xl text-yellow-300">01787171252</span> নাম্বারে 
               <span className="font-black text-xl text-white"> {totalPrice} TK </span> 
               "Send Money" করুন।
             </p>

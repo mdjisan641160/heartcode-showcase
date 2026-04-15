@@ -120,7 +120,7 @@ const Home = ({ addToCart, wishlist = [], toggleWishlist }) => {
         <div className="relative mb-6 group">
           <input 
             type="text" 
-            placeholder="Search projects (e.g. Birthday, Anniversary...)" 
+            placeholder="Search projects" 
             className="w-full px-6 py-4 rounded-2xl bg-white shadow-lg border border-slate-100 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-black placeholder:text-slate-400"
             style={{ color: 'black', backgroundColor: 'white' }} 
             value={searchTerm}

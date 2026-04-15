@@ -8,7 +8,7 @@ const Footer = () => {
           
           {/* ১. ব্র্যান্ডিং সেকশন */}
           <div>
-            <h2 className="text-3xl font-bold text-blue-500 mb-6">HeartCode Studio</h2>
+            <h2 className="text-3xl font-bold text-blue-500 mb-6">HeartCode Studio BD</h2>
             <p className="text-gray-400 leading-relaxed text-justify">
               আপনার পছন্দের সেরা ডিজিটাল গিফট এবং ওয়েবসাইট সংগ্রহ করুন আমাদের কাছ থেকে। 
               আমরা দিচ্ছি ১০০% কোয়ালিটি সম্পন্ন প্রোজেক্টের নিশ্চয়তা। আপনার ডিজিটাল 
@@ -49,11 +49,11 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-4">
                 <span className="text-pink-500 text-xl">📞</span>
-                <span>+88017XXXXXXXX (আপনার নম্বর)</span>
+                <span>+8801787171252</span>
               </li>
               <li className="flex items-start gap-4">
                 <span className="text-pink-500 text-xl">✉️</span>
-                <span>heartcodestudio@gmail.com</span>
+                <span>mdjubayer641160@gmail.com</span>
               </li>
               <li className="flex items-start gap-4 hover:text-green-500 cursor-pointer transition-all">
                 <span className="text-green-500 text-xl">💬</span>
@@ -67,11 +67,11 @@ const Footer = () => {
         {/* নিচের কপিরাইট অংশ */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-sm text-gray-500 mb-2">
-            © 2026 <span className="text-blue-500 font-bold">HeartCode Studio</span>. All Rights Reserved.
+            © 2026 <span className="text-blue-500 font-bold">HeartCode Studio BD</span>. All Rights Reserved.
           </p>
           <div className="flex justify-center items-center gap-2 text-xs text-gray-600">
              <div className="h-[1px] w-10 bg-gray-700"></div>
-             Developed by <span className="text-gray-400">Your Name</span>
+             Developed by <span className="text-gray-400">MD Jubayer jisan</span>
              <div className="h-[1px] w-10 bg-gray-700"></div>
           </div>
         </div>

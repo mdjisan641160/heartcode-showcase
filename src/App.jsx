@@ -70,7 +70,7 @@ function App() {
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-xl md:text-2xl font-black italic text-slate-800 cursor-pointer" onClick={() => setView('home')}>
-            HeartCode <span className="text-pink-500">Studio</span>
+            HeartCode <span className="text-pink-500">Studio BD</span>
           </h1>
           
           <div className="flex items-center gap-2 md:gap-4">
